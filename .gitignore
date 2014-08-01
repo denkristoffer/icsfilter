@@ -13,3 +13,5 @@
 /lib/bundler/man/
 
 Gemfile.lock
+
+vendor/bundle
