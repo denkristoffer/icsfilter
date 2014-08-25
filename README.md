@@ -5,6 +5,15 @@ icsfilter provides a basic way to filter events or change wording in ics files u
 In combination with launchd and [ControlPlane](http://www.controlplaneapp.com/) it's proven to be very useful to me. See [screenshots here](#screenshots).
 
 
+## Installation
+
+At the moment icsfilter is only available through GitHub, as the code requires you to change parts of it anyway. You can get it by cloning it through git with
+
+    git clone https://github.com/sachse/icsfilter.git
+
+Or you can just [download a ZIP](/archive/master.zip)
+
+
 
 
 ## Screenshots
