@@ -8,5 +8,8 @@ opts = Trollop::options do
   # opt :out, "File to save the filtered calendar to. Required if the calendar given is a URL", short: 'o'
 end
 
+filters = Regexp.union(/\AKSA \/ fri\z/, /\AKSA \/ Lukket\z/)
+targets = Regexp.union(/\AKSA \/ /, /\AStudy Activity\,  : /)
+
 obj = ICSFilter.new(ARGV[0], ARGV[1])
-obj.filter.publish
+obj.filter(filters).replace(targets).publish
