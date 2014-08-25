@@ -10,12 +10,14 @@ class ICSFilter
     @output = output ? output : calendar
   end
 
-  def filter#(filters, replacements)
-    filters = Regexp.union(/\AKSA \/ fri\z/, /\AKSA \/ Lukket\z/)
-    replacements = Regexp.union(/\AKSA \/ /, /\AStudy Activity\,  : /)
-
+  def filter(filters)
     @events.reject! { |event| event.summary.match(filters) }
-    @events.each { |event| event.summary.gsub!(replacements, '') }
+
+    self
+  end
+
+  def replace(targets, substitute = '')
+    @events.each { |event| event.summary.gsub!(targets, substitute) }
 
     self
   end
