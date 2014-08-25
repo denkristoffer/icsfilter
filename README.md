@@ -18,7 +18,7 @@ Or you can just [download a ZIP](/archive/master.zip)
 
 icsfilter currently requires you to modify the source code so that it uses your own regular expressions when filtering:
 
-Open the `bin/icsfilter` file in your editor of choice. Locate the lines setting the variables `filters` and `targets` [(see here)](https://github.com/sachse/icsfilter/blob/5fd4ab15109e0d5e3531807d6366c0958db95aa4/bin/icsfilter#L11-12) and change the regular expression unions to match your needs.
+Open the `bin/icsfilter` file in your editor of choice. Locate the lines setting the variables `filters` and `targets` ([see here](https://github.com/sachse/icsfilter/blob/5fd4ab15109e0d5e3531807d6366c0958db95aa4/bin/icsfilter#L11-12)) and change the regular expression unions to match your needs.
 
 
 ## Screenshots
