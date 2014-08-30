@@ -1,15 +1,25 @@
 #!/usr/bin/env ruby
-# encoding: utf-8
 
 require_relative '../lib/trollop'
 require_relative '../lib/icsfilter'
 
 opts = Trollop::options do
-  # opt :out, "File to save the filtered calendar to. Required if the calendar given is a URL", short: 'o'
+  opt :remove, "A regular expression pattern that should trigger event removal. Can be passed multiple times to remove events with different patterns", short: 'r', type: :string, multi: true
+  opt :filter, "A regular expression pattern that should be filtered from the event summary. Can be passed multiple times to filter different patterns", short: 'f', type: :string, multi: true
 end
 
-filters = Regexp.union(/\AKSA \/ fri\z/, /\AKSA \/ Lukket\z/)
-targets = Regexp.union(/\AKSA \/ /, /\AStudy Activity\,  : /)
-
 icsfilter = IcsFilter.new(ARGV[0], ARGV[1])
-icsfilter.filter(filters).replace(targets).publish
+
+if opts.filter_given
+  filters = Regexp.union(opts.filter.map! { |regex| Regexp.new regex })
+
+  icsfilter.filter(filters)
+end
+
+if opts.remove_given
+  targets = Regexp.union(opts.remove.map! { |regex| Regexp.new regex })
+
+  icsfilter.replace(targets)
+end
+
+icsfilter.publish

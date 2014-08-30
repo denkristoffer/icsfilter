@@ -12,14 +12,10 @@ class IcsFilter
 
   def filter(filters)
     @events.reject! { |event| event.summary.match(filters) }
-
-    self
   end
 
   def replace(targets, substitute = '')
     @events.each { |event| event.summary.gsub!(targets, substitute) }
-
-    self
   end
 
   def publish
