@@ -1,7 +1,7 @@
 require 'icalendar'
 require 'open-uri'
 
-class ICSFilter
+class IcsFilter
   def initialize(calendar, output = nil)
     calendar_file = open(calendar)
     calendars = Icalendar.parse(calendar_file)
