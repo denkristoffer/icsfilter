@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
 
-gem 'icalendar', '~> 2.1.0'
+gem 'icalendar', '~> 2.1'
