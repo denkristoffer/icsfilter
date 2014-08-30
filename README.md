@@ -11,7 +11,7 @@ At the moment icsfilter is only available through GitHub, as the code requires y
 
     git clone https://github.com/sachse/icsfilter.git
 
-Or you can just [download a ZIP](/archive/master.zip)
+Or you can just [download a ZIP](https://github.com/sachse/icsfilter/archive/master.zip).
 
 
 ## How to use
