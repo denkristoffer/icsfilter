@@ -2,28 +2,48 @@
 
 icsfilter provides a basic way to filter events or change wording in ics files using the command line. In addition to local files it also works with online ics calendars that you can't otherwise change the output of.
 
-In combination with launchd and [ControlPlane](http://www.controlplaneapp.com/) it's proven to be very useful to me. See [screenshots here](#screenshots).
+In combination with launchd and [ControlPlane](http://www.controlplaneapp.com/) it's proven to be very useful to me. [See Examples for more](#examples).
 
 
 ## Installation
 
-At the moment icsfilter is only available through GitHub, as the code requires you to change parts of it anyway. You can get it by cloning it through git with
+### Installation from the source
+
+You can download icsfilter's source either it by cloning it through git with the following command:
 
     git clone https://github.com/sachse/icsfilter.git
 
 Or you can just [download a ZIP](https://github.com/sachse/icsfilter/archive/master.zip).
 
+If you install from the source you will also have to install icsfilter's depencies with Bundler:
+
+    bundle install
+
 
 ## How to use
 
-icsfilter currently requires you to modify the source code so that it uses your own regular expressions when filtering:
+To use icsfilter you need to know how to construct regular expressions that target whatever you want to filter. Do NOT include the slashes (`/`) that often delimit regular expressions.
 
-Open the `bin/icsfilter` file in your editor of choice. Locate the lines setting the variables `filters` and `targets` ([see here](https://github.com/sachse/icsfilter/blob/5fd4ab15109e0d5e3531807d6366c0958db95aa4/bin/icsfilter#L11-12)) and change the regular expression unions to match your needs.
+icsfilter accepts two command line options, `--remove` and `--filter`. Both can be passed multiple times in the samme command if you want to remove or filter multiple things at once.
+
+`--remove`, `-r` will completely remove all events whose summaries match the regular expression passed to it.
+
+`--filter`, `-f` filters out regular expression matches from event summaries. It does not remove the event itself.
+
+**N.B.:** If your ics file contains multiple calendars icsfilter will only process and republish the first one.
 
 
-## Screenshots
+### Examples
 
-Personally, I use icsfilter for both my university and work calendars. These screenshots show the calendars before and after:
+A contrived example showing how icsfilter can be used could be something like this:
+
+    ./bin/icsfilter -r '\ARemove this event' -r '(\WAlso remove this\W|\Wor this\W)' -f 'filter out this sentence\Z' http://some.tld/webcalendar $HOME/Desktop/filtered-calendar.ics
+
+If no output argument (the last one) is given, icsfilter will try to save to the file that was given as input.
+
+Personally, I use icsfilter for both my university and work calendars, which are both published online. I then store the filtered ics files on a server (in this case Dropbox's Public folder works perfectly) and can then subscribe to them in Calendar. This way the filtered calendars also work on my phone.
+
+The following screenshots show the two calendars before and after filtering:
 
 ![Calendar image before icsfilter was used](/../screenshots/before.png?raw=true "Before")
 
