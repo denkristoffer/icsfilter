@@ -10,11 +10,11 @@ class IcsFilter
     @output = output ? output : calendar
   end
 
-  def filter(filters)
-    @events.reject! { |event| event.summary.match(filters) }
+  def remove(targets)
+    @events.reject! { |event| event.summary.match(targets) }
   end
 
-  def replace(targets, substitute = '')
+  def filter(targets, substitute = '')
     @events.each { |event| event.summary.gsub!(targets, substitute) }
   end
 

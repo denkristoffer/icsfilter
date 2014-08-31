@@ -11,15 +11,15 @@ end
 icsfilter = IcsFilter.new(ARGV[0], ARGV[1])
 
 if opts.filter_given
-  filters = Regexp.union(opts.filter.map! { |regex| Regexp.new regex })
+  targets = Regexp.union(opts.filter.map! { |regex| Regexp.new regex })
 
-  icsfilter.filter(filters)
+  icsfilter.filter(targets)
 end
 
 if opts.remove_given
   targets = Regexp.union(opts.remove.map! { |regex| Regexp.new regex })
 
-  icsfilter.replace(targets)
+  icsfilter.remove(targets)
 end
 
 icsfilter.publish
