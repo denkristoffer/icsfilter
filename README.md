@@ -30,6 +30,8 @@ icsfilter accepts two command line options, `--remove` and `--filter`. Both can 
 
 `--filter`, `-f` filters out regular expression matches from event summaries. It does not remove the event itself.
 
+icsfilter removes events before filtering event summaries, so don't make your regular expressions for removal match something that would only be found after filtering.
+
 **N.B.:** If your ics file contains multiple calendars icsfilter will only process and republish the first one.
 
 
