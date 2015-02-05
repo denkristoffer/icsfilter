@@ -24,7 +24,7 @@ If you install from the source you will also have to install icsfilter's depenci
 
 To use icsfilter you need to know how to construct regular expressions that target whatever you want to filter. Do NOT include the slashes (`/`) that often delimit regular expressions.
 
-icsfilter accepts two command line options, `--remove` and `--filter`. Both can be passed multiple times in the samme command if you want to remove or filter multiple things at once.
+icsfilter accepts two command line options, `--remove` and `--filter`. Both can be passed multiple times in the same command if you want to remove or filter multiple things at once.
 
 `--remove`, `-r` will completely remove all events whose summaries match the regular expression passed to it.
 
