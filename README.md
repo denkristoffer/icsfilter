@@ -7,6 +7,13 @@ In combination with launchd and [ControlPlane](http://www.controlplaneapp.com/) 
 
 ## Installation
 
+### Installation from Rubygems
+
+The easiest way to get icsfilter up and running is by installing through Rubygems:
+
+    gem install icsfilter
+
+
 ### Installation from the source
 
 You can download icsfilter's source either it by cloning it through git with the following command:
